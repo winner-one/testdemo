@@ -1,0 +1,263 @@
+<style>
+    .input-company {
+        display: flex;
+        align-items: center;
+    }
+
+    .input-company span {
+        margin-left: 5px;
+        width: 40px;
+    }
+
+    .status {
+        border: none;
+        cursor: pointer;
+        /* color: #3498db; */
+        color: #18bc9c;
+        font-size: 14px;
+    }
+
+    .statusDelete {
+        color: #ED3C30;
+        margin-left: 10px;
+    }
+
+    .status-s {
+        color: #3498db;
+    }
+
+    .goodsListTable tr {
+        display: flex;
+        border-bottom: 1px solid #eee;
+    }
+
+    .goodsListTable tr img {
+        width: 46px;
+        height: 46px;
+    }
+
+    .table>thead>tr>th {
+        border: none;
+        border-bottom: 1px solid #eee;
+    }
+
+    .goodsListTable td {
+        border: none;
+        padding: 15px 0 !important;
+        border: none !important;
+
+    }
+
+    [v-cloak] {
+        display: none
+    }
+</style>
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <input type="hidden" name="row[goodsList]" id="goodsList">
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Title')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-title" class="form-control" name="row[title]" type="text" value="{$row.title|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Type')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="radio">
+                {if condition="$row.type == 'groupon'"}
+
+                <label for="groupon"><input id="groupon" class="radioSelect" name="row[type]" type="radio"
+                        value="groupon" checked />
+                    拼团</label>
+                {/if}
+
+                {if condition="$row.type == 'seckill'"}
+                <label for="seckill"><input id="seckill" class="radioSelect" name="row[type]" type="radio"
+                        value="seckill" checked /> 秒杀</label>
+                {/if}
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Description')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-description" class="form-control" name="row[description]" type="text"
+                value="{$row.description|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Starttime')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-starttime" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss"
+                data-use-current="true" name="row[starttime]" type="text"
+                value="{:date('Y-m-d H:i:s', $row.starttime)}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Endtime')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-endtime" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss"
+                data-use-current="true" name="row[endtime]" type="text" value="{:date('Y-m-d H:i:s', $row.endtime)}">
+        </div>
+    </div>
+    {if condition="$row.type === 'seckill'"}
+    <div class=" seckill-show select-show">
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2">每人限购:</label>
+            <div class="col-xs-12 col-sm-8 input-company">
+                <input id="c-description" class="form-control" name="row[seckill][limit_buy]" type="text"
+                    value="{$row.seckill.limit_buy|htmlentities}">
+                <span>件</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2">活动订单自动关闭时间:</label>
+            <div class="col-xs-12 col-sm-8 input-company">
+                <input id="c-order_auto_close" class="form-control" name="row[seckill][order_auto_close]" type="text" value="{present name='row.seckill.order_auto_close'}{$row.seckill.order_auto_close|htmlentities}{/present}">
+                <span>分钟</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2">活动自动关闭时间:</label>
+            <div class="col-xs-12 col-sm-8 input-company">
+                <input id="c-activity_auto_close" class="form-control" name="row[seckill][activity_auto_close]" type="text" value="{present name='row.seckill.order_auto_close'}{$row.seckill.activity_auto_close|htmlentities}{/present}">
+                <span>分钟</span>
+            </div>
+        </div>
+    </div>
+    
+    {/if}
+    {if condition="$row.type === 'groupon'"}
+    <div class="groupon-show select-show">
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2">每人限购:</label>
+            <div class="col-xs-12 col-sm-8 input-company">
+                <input id="c-description" class="form-control" name="row[groupon][limit_buy]" type="text"
+                    value="{$row.groupon.limit_buy|htmlentities}">
+                <span>件</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2">活动订单自动关闭时间:</label>
+            <div class="col-xs-12 col-sm-8 input-company">
+                <input id="c-order_auto_close" class="form-control" name="row[groupon][order_auto_close]" type="text" value="{present name='row.groupon.order_auto_close'}{$row.groupon.order_auto_close|htmlentities}{/present}">
+                <span>分钟</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2">活动自动关闭时间:</label>
+            <div class="col-xs-12 col-sm-8 input-company">
+                <input id="c-activity_auto_close" class="form-control" name="row[groupon][activity_auto_close]" type="text" value="{present name='row.groupon.order_auto_close'}{$row.groupon.activity_auto_close|htmlentities}{/present}">
+                <span>分钟</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2">成团人数:</label>
+            <div class="col-xs-12 col-sm-8 input-company">
+                <input id="c-description" class="form-control" name="row[groupon][team_num]" type="text"
+                    value="{$row.groupon.team_num|htmlentities}">
+                <span>人</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2">组团有效时间:</label>
+            <div class="col-xs-12 col-sm-8 input-company">
+                <input id="c-valid_time" class="form-control" name="row[groupon][valid_time]" type="text" value="{$row.groupon.valid_time|htmlentities}">
+                <span>分钟</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2">参团卡提示:</label>
+            <div class="col-xs-12 col-sm-8">
+                <input id="c-team_card" name="row[groupon][team_card]" type="hidden"
+                    value="{:$row.groupon.team_card?1:0}">
+                <a href="javascript:;" data-toggle="switcher" class="btn-switcher" data-input-id="c-team_card"
+                    data-yes="1" data-no="0">
+                    <i class="fa fa-toggle-on text-success {if !$row.groupon.team_card}fa-flip-horizontal text-gray{/if} fa-2x"></i>
+                </a>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2">单人成团购买:</label>
+            <div class="col-xs-12 col-sm-8">
+                <input id="c-is_alone" name="row[groupon][is_alone]" type="hidden" value="{:$row.groupon.is_alone?1:0}">
+                <a href="javascript:;" data-toggle="switcher" class="btn-switcher" data-input-id="c-is_alone"
+                    data-yes="1" data-no="0">
+                    <i class="fa fa-toggle-on text-success {if !$row.groupon.is_alone}fa-flip-horizontal text-gray{/if} fa-2x"></i>
+                </a>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2">是否虚拟成团:</label>
+            <div class="col-xs-12 col-sm-8">
+                <input id="c-is_fictitious" name="row[groupon][is_fictitious]" type="hidden" value="{:$row.groupon.is_fictitious?1:0}">
+                <a href="javascript:;" data-toggle="switcher" class="btn-switcher" data-input-id="c-is_fictitious"
+                    data-yes="1" data-no="0">
+                    <i class="fa fa-toggle-on text-success {if !$row.groupon.is_fictitious}fa-flip-horizontal text-gray{/if} fa-2x"></i>
+                </a>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2">最多虚拟人数:</label>
+            <div class="col-xs-12 col-sm-8 input-company">
+                <input id="c-fictitious_num" class="form-control" name="row[groupon][fictitious_num]" type="text" value="{$row.groupon.fictitious_num|htmlentities}">
+                <span>人</span>
+            </div>
+        </div>
+    </div>
+    {/if}
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">选择商品:</label>
+        <input type="hidden" id="goods_ids" name="row[goods_ids]" value="">
+        <div class="col-xs-12 col-sm-8 row-flex">
+            <div class="input-group-addon no-border no-padding">
+                <button type="button" class="btn-primary btn chooseGoods" data-multiple="true" data-type="activity">
+                    选择
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8 row-flex">
+            <div id="activityData" style="width: 100%;">
+                <div v-show="goodsList.length>0" v-cloak style="width: 100%;">
+                    <table class="table goodsListTable" cellpadding="0" cellspacing="0">
+                        <thead style="background: #eee;
+                        align-items: center;">
+                            <tr>
+                                <th style="    width: 45px;
+                                    padding-left: 10px;">商品</th>
+                                <th style="width: 65%;padding:15px 10px !important;"></th>
+                                <th>设置</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(item, i) in goodsList" :key="i">
+                                <td>
+                                    <img :src="Fast.api.cdnurl(item.image)">
+                                </td>
+                                <td style="width: 65%;padding:15px 10px !important;">
+                                    <span>{{item.title}}</span>
+                                </td>
+                                <td>
+                                    <span class="status chooseActivityPrice" :class="item.opt?'status-s':''"
+                                        :data-id="item.id" :data-actSkuPrice="encodeURI(item.actSkuPrice)"
+                                        :data-index="i">{{item.opt === 0 ? "设置价格" : "修改价格"}}</span>
+                                    <span class="status statusDelete" @click="selectDelete(i)">移除</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="button" class="btn btn-success btn-embossed" id="actSub">{:__('OK')}</button>
+        </div>
+    </div>
+</form>

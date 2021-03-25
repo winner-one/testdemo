@@ -1,0 +1,113 @@
+<style>
+    .skuChildrenBox {
+        display: flex;
+        padding: 0 15px;
+        flex-wrap: wrap;
+    }
+
+    .skuChildren {
+        margin-right: 10px;
+        margin-top: 10px;
+        width: 50px;
+        height: 24px;
+        line-height: 24px;
+        color: rgba(80, 80, 80, 1);
+        border-radius: 2px;
+        font-size: 12px;
+        text-align: center;
+        border: 1px solid rgba(231, 231, 231, 1);
+        position: relative;
+    }
+
+    .skuChildrenSelect {
+        border: 1px solid rgba(212, 48, 48, 1)
+    }
+
+    .skuChildren-close {
+        position: absolute;
+        background: rgba(212, 48, 48, 1);
+        color: #fff;
+        border-radius: 50%;
+        width: 12px;
+        height: 12px;
+        top: -6px;
+        right: -6px;
+        font-style: 12px;
+        -webkit-transform: scale(0.8);
+    }
+
+    .status {
+        border: none;
+        cursor: pointer;
+        color: #3498db;
+        font-size: 14px;
+    }
+
+    .status-s {
+        color: #ED3C30;
+    }
+
+    [v-cloak] {
+        display: none
+    }
+</style>
+<script src="__CDN__/assets/addons/shopro/libs/vue.js"></script>
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <div class="panel panel-default panel-intro">
+        <div class="panel-body">
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade active in" id="basic">
+                    <div class="widget-body no-padding">
+                        <table class="table" id="skuPrce" v-cloak>
+                            <thead>
+                                <tr>
+                                    <th v-for="(item, i) in skuList" :key="i">
+                                        {{item.name}}
+                                    </th>
+                                    <th width="80">库存</th>
+                                    <th width="80">价格</th>
+                                    <th width="80">活动销量</th>
+                                    <th width="80">活动库存</th>
+                                    <th width="80">活动价格</th>
+                                    <th width="80">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(item, i) in skuPrice" :key="i" >
+                                    <td v-for="(v, j) in item.goods_sku_text" :key="j">
+                                        {{v}}
+                                    </td>
+                                    <td width="80"><input type="text" v-model="item.stock" class="input-sm form-control"
+                                            disabled>
+                                    </td>
+                                    <td width="80">
+                                        <input type="text" v-model="item.price" class="input-sm form-control" disabled>
+                                    </td>
+                                    <td width="80">
+                                        <input type="text" v-model="item.sales" class="input-sm form-control" disabled>
+                                    </td>
+                                    <td width="80"><input v-if="actSkuPrice[i].status=='up'" type="number" v-model="actSkuPrice[i].stock" :disabled="is_edit"
+                                            class="input-sm form-control">
+                                    </td>
+                                    <td width="80">
+                                        <input v-if="actSkuPrice[i].status=='up'" type="number" v-model="actSkuPrice[i].price" :disabled="is_edit"
+                                            class="input-sm form-control">
+                                    </td>
+                                    <td width="80">
+                                        <span class="input-sm form-control status" v-if="!is_edit"
+                                            :class="item.opt?'status-s':''"
+                                            @click="goJoin(i)">{{actSkuPrice[i].status=='up'?'取消':'参与'}}</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group layer-footer">
+            <label class="control-label col-xs-12 col-sm-2"></label>
+            <div class="col-xs-12 col-sm-8">
+                <button type="button" class="btn btn-success btn-embossed" id="activitySub">{:__('OK')}</button>
+            </div>
+        </div>
+</form>

@@ -1,0 +1,595 @@
+<link rel="stylesheet" href="__CDN__/assets/addons/shopro/libs/element/element.css">
+<style>
+    #activity-index {
+        background: #fff;
+        padding: 0 20px 30px;
+        font-size: 14px;
+        font-family: Source Han Sans SC;
+        font-weight: 500;
+    }
+    label{
+        margin: 0;
+    }
+
+    .color-444 {
+        color: #444;
+    }
+
+    .color-666 {
+        color: #444;
+    }
+
+    .cursor-pointer {
+        cursor: pointer;
+    }
+
+    .activity-title {
+        height: 50px;
+        font-weight: 600;
+    }
+
+    .tips {
+        padding: 16px;
+        border-radius: 5px;
+        background-color: #F1EBFA;
+        position: relative;
+        margin-bottom: 20px;
+        font-size: 12px;
+    }
+
+    .tip-a,
+    .tip-a:hover {
+        color: #7536D0;
+    }
+
+    .tip-close {
+        color: #7536D0;
+        position: absolute;
+        top: 16px;
+        right: 16px;
+    }
+
+    .select-con {
+        justify-content: space-between;
+        font-size: 12px;
+        margin-bottom: 14px;
+    }
+
+    .select-item {
+        margin-right: 14px;
+    }
+
+    .recycle-activity {
+        width: 98px;
+        height: 32px;
+        border-radius: 4px;
+        border: 1px solid #444;
+        color: #444;
+        cursor: pointer;
+        justify-content: center;
+    }
+    .recycle-activity i{
+        margin-right: 8px;
+        font-size: 16px;
+    }
+
+    .found-activity {
+        width: 98px;
+        height: 32px;
+        background: #7536D0;
+        border-radius: 4px;
+        color: #fff;
+        cursor: pointer;
+        text-align: center;
+        line-height: 32px;
+        margin-left: 40px;
+    }
+
+    .choose-activity-goods,
+    .choose-activity-method {
+        background: #7536D0;
+        border: none;
+        color: #fff;
+        height: 34px;
+        line-height: 34px;
+        padding: 0 20px;
+        font-size: 13px;
+    }
+
+    .el-button:hover {
+        background: #7536D0;
+        border: none;
+        color: #fff;
+    }
+
+    .el-button.is-disabled {
+        border: 1px solid #EBEEF5;
+    }
+
+    .table-edit-btn {
+        color: #7536D0;
+        margin-right: 16px;
+    }
+
+    .table-view-btn {
+        color: #7536D0;
+        margin-right: 16px;
+    }
+
+    .table-delete-btn {
+        color: #F54747;
+    }
+
+    .table-edit-btn:hover {
+        color: #7536D0;
+    }
+
+    .table-view-btn:hover {
+        color: #7536D0;
+    }
+
+    .table-delete-btn:hover {
+        color: #F54747;
+    }
+
+
+    .el-table,
+    .el-table thead {
+        color: #444;
+    }
+
+    .el-table,
+    .el-table thead .cell {
+        font-weight: 500;
+
+    }
+
+    .el-table th {
+        background: #F9F9F9;
+    }
+
+    .cell {
+        text-align: center;
+    }
+
+    .el-select {
+        width: 114px;
+    }
+
+    /* el-dialog */
+    .table-good-status {
+        color: #7536D0;
+        margin-right: 14px;
+    }
+
+    .table-good-status-1 {
+        color: #21D7AE;
+    }
+
+    .table-good-status-delete {
+        color: #F54747;
+    }
+
+    .switch-flex {
+        display: flex;
+        align-items: center;
+    }
+
+    .switch-tip {
+        margin: 0 16px;
+    }
+
+    .el-icon-question {
+        font-size: 24px;
+        color: #d5d5d5;
+
+    }
+
+    .popover-item {
+        line-height: 42px;
+        position: relative;
+        top: 5px;
+    }
+
+    .dialog-submit {
+        width: 88px;
+        height: 36px;
+        background: #F3EFFB;
+        border: 1px solid #7536d0;
+        color: #7536d0;
+        position: absolute;
+        right: 56px;
+        border-radius: 20px;
+        text-align: center;
+        line-height: 36px;
+    }
+
+    .dialog-submit-gray {
+        color: #999;
+        border: 1px solid #999;
+        background: #fff;
+    }
+
+    .el-radio-button__orig-radio:checked+.el-radio-button__inner {
+        background-color: #7536d0;
+        border-color: #7536d0;
+        -webkit-box-shadow: -1px 0 0 0 #7536d0;
+        box-shadow: -1px 0 0 0 #7536d0;
+    }
+
+    .el-radio-button__inner:hover {
+        color: #666;
+    }
+
+    .el-input,
+    .el-textarea,
+    .el-date-editor--datetimerange.el-input,
+    .el-date-editor--datetimerange.el-input__inner {
+        max-width: 460px;
+    }
+
+    .el-date-editor--datetimerange.el-input__inner {
+        width: 100%;
+    }
+
+    .el-dialog {
+        width: 740px;
+        margin-top: 10vh !important;
+    }
+
+    .el-dialog .cell {
+        text-align: left;
+    }
+
+    .el-dialog__body {
+        padding: 30px 52px 40px 52px;
+    }
+
+    .el-dialog .el-radio__input.is-checked+.el-radio__label {
+        color: #7536d0;
+    }
+
+    .el-dialog .el-radio__input.is-checked .el-radio__inner {
+        border-color: #7536d0;
+        background: #7536d0;
+    }
+
+    .el-form-item__label {
+        color: #666;
+        font-weight: 500;
+    }
+
+    .el-dialog__header {
+        padding: 16px 20px 16px;
+        border-bottom: #D5D5D5 1px solid;
+    }
+
+    .el-input__inner::-webkit-input-placeholder,
+    .el-input__inner::-moz-input-placeholder,
+    .el-input__inner::-ms-input-placeholder {
+        color: #C0C4CF;
+    }
+
+    .el-pager li.active,
+    .el-pager li:hover {
+        color: #7536d0;
+    }
+
+    .display-flex {
+        display: flex;
+        align-items: center;
+    }
+
+    .el-form-item__content .el-input__inner {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        /* border-right: 0; */
+    }
+
+    .el-form-item__content .choose-activity-method {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    .el-form-item__content .el-button.is-disabled {
+        background: #F5F7FA;
+        color: #909399;
+        border: 1px solid #DCDFE6;
+    }
+
+    .activityForm-auto {
+        /* height: 592px;
+        overflow: auto;*/
+        padding-right: 44px;
+    }
+
+    .activityForm-auto::-webkit-scrollbar-track-piece {
+        background-color: #f8f8f8;
+    }
+
+    .activityForm-auto::-webkit-scrollbar {
+        width: 9px;
+        height: 9px;
+    }
+
+    .activityForm-auto::-webkit-scrollbar-thumb {
+        background-color: #dddddd;
+        background-clip: padding-box;
+        min-height: 28px;
+
+    }
+
+    .el-radio-button__inner {
+        font-size: 12px;
+        padding: 9px 20px;
+        ;
+    }
+
+    .el-input__inner {
+        font-size: 12px;
+        height: 32px;
+        line-height: 32px;
+    }
+
+    .el-input__icon {
+        line-height: 32px;
+    }
+
+    .margin-right-5 {
+        margin-right: 5px;
+    }
+
+    .el-dialog__title {
+        font-size: 14px;
+    }
+
+    .el-dialog .el-input__inner {
+        height: 34px;
+        line-height: 34px;
+        font-size: 13px;
+    }
+
+    .el-form-item__label,
+    .el-radio__label,
+    .el-form-item__content,
+    .el-select-dropdown__item,
+    .el-table {
+        font-size: 13px;
+    }
+
+    .el-table_1_column_1,
+    .el-table_1_column_2,
+    .el-table_1_column_3,
+    .el-table_1_column_4,
+    .el-table_1_column_5,
+    .el-table_1_column_6,
+    .el-table_1_column_7,
+    .el-table_1_column_8 {
+        border-right: none !important;
+    }
+
+    .el-table__fixed-right::before,
+    .el-table__fixed::before {
+        height: 0 !important;
+    }
+
+    .el-date-editor .el-range__icon,
+    .el-date-editor .el-range-separator {
+        line-height: 28px;
+    }
+    .page-container{
+        justify-content: flex-end;
+        margin-top: 30px;
+    }
+
+    [v-cloak] {
+        display: none;
+    }
+</style>
+<script src="__CDN__/assets/addons/shopro/libs/vue.js"></script>
+<script src="__CDN__/assets/addons/shopro/libs/element/element.js"></script>
+<script src="__CDN__/assets/addons/shopro/libs/moment.js"></script>
+<div id="activity-index" v-cloak>
+    <div class="activity-title color-444 display-flex">营销活动</div>
+    <div class="activity-tip color-444" v-if="tipCloseFlag">
+        <div class="tips">
+            <p><strong>活动说明</strong></p>
+            <p>1、活动订单自动关闭时间 是为当前活动订单专门设置的超时未支付自动关闭时间，如果未设置，将使用系统订单自动关闭时间</p>
+            <p>2、活动自动关闭时间 是当前活动结束后多长时间自动关闭，关闭的活动请在历史活动查看</p>
+            <p>3、每人限购 不设置或者设置为 0 将不限制购买数量</p>
+            <!-- <p>4、为确保活动的可靠性，请务必配置 Redis <a class="tip-a" href="https://doc.fastadmin.net/shopro" target="_blank">查看文档</a>
+            </p> -->
+            <i class="el-icon-close tip-close" @click="tipClose"></i>
+        </div>
+    </div>
+    <div class="activity-con">
+        <div class="select-con display-flex">
+            <div class="display-flex">
+                <el-select class="select-item" v-model="activityName" placeholder="请选择" @change="selectChange">
+                    <el-option v-for="item in activityOptions" :key="item.value" :label="item.label"
+                        :value="item.value">
+                    </el-option>
+                </el-select>
+                <el-radio-group v-model="statusName" @change="radioChange">
+                    <el-radio-button label="全部"></el-radio-button>
+                    <el-radio-button label="未开始"></el-radio-button>
+                    <el-radio-button label="进行中"></el-radio-button>
+                    <el-radio-button label="已结束"></el-radio-button>
+                </el-radio-group>
+                <div class="found-activity" @click="foundActivity"><i class="el-icon-plus margin-right-5"></i>新建活动</div>
+            </div>
+            <div class="recycle-activity display-flex" @click="goRecycle">历史活动</div>
+
+        </div>
+        <div>
+            <el-table :data="activityData" style="width: 100%" border>
+                <el-table-column prop="id" label="ID" width="80">
+                </el-table-column>
+                <el-table-column prop="title" label="活动名称" width="140">
+                </el-table-column>
+                <el-table-column prop="goods_ids" label="商品组" min-width="200">
+                </el-table-column>
+                <el-table-column prop="type" label="类型" width="160">
+                    <template slot-scope="scope">
+                        <span>{{filterActivityType(scope.row.type)}}</span>
+                    </template>
+                </el-table-column>
+                <el-table-column prop="starttime_text" label="开始时间" width="200">
+                </el-table-column>
+                <el-table-column prop="endtime_text" label="结束时间" width="200">
+                </el-table-column>
+                <el-table-column prop="createtime" label="创建时间" width="200">
+                    <template slot-scope="scope">
+                        <span>{{moment(scope.row.createtime*1000).format('YYYY-MM-DD HH:mm:ss')}}</span>
+                    </template>
+                </el-table-column>
+                <el-table-column prop="richtext_id" label="活动说明" width="320">
+                </el-table-column>
+                <el-table-column fixed="right" label="操作" width="100">
+                    <template slot-scope="scope">
+                        <span v-if="scope.row.status!='nostart'" class="table-view-btn cursor-pointer"
+                            @click="handleClick(scope.row,'view')">查看
+                        </span>
+                        <span v-if="scope.row.status=='nostart'" class="table-edit-btn cursor-pointer"
+                            @click="handleClick(scope.row,'edit')">编辑</span>
+                        <span class="table-delete-btn cursor-pointer" @click="handleClick(scope.row,'delete')">删除</span>
+                    </template>
+                </el-table-column>
+            </el-table>
+        </div>
+    </div>
+    <div class="page-container display-flex">
+        <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
+            :current-page="currentPage" :page-sizes="[10, 20, 30, 40]" :page-size="10"
+            layout="total, sizes, prev, pager, next, jumper" :total="totalPage">
+        </el-pagination>
+    </div>
+    <!-- el-dialog -->
+    <el-dialog title="活动" :visible.sync="dialogVisible" width="740" :before-close="handleClose"
+        :close-on-click-modal="false">
+        <el-form ref="activityForm" :model="activityForm" label-width="130px" :rules="rules">
+            <div class="activityForm-auto">
+                <el-form-item label="活动名称：" prop="title">
+                    <el-input v-model="activityForm.title" placeholder="请输入活动名称" :disabled="disabledFlag"></el-input>
+                </el-form-item>
+                <el-form-item label="活动类型：" prop="type">
+                    <el-radio-group v-model="activityForm.type" :disabled="disabledFlag">
+                        <el-radio label="seckill">秒杀活动</el-radio>
+                        <el-radio label="groupon">拼团活动</el-radio>
+                    </el-radio-group>
+                </el-form-item>
+                <el-form-item label="活动时间：" prop="dateTime">
+                    <el-date-picker v-model="activityForm.dateTime" type="datetimerange" @input="changeDateTime"
+                        start-placeholder="开始日期" end-placeholder="结束日期" :disabled="disabledFlag">
+                    </el-date-picker>
+                </el-form-item>
+                <div v-if="activityForm.type=='groupon'">
+                    <el-form-item label="成团人数：" prop="team_num">
+                        <el-input type='number' v-model.number="activityForm.team_num" placeholder="请输入成团人的数量"
+                            :disabled="disabledFlag">
+                            <template slot="append">人</template>
+                        </el-input>
+                    </el-form-item>
+                    <div class="switch-flex">
+                        <el-form-item label="单独购买：" prop="is_alone">
+                            <el-switch v-model="activityForm.is_alone" active-color="#7536D0" inactive-color="#e9ebef"
+                                :disabled="disabledFlag" active-value="1" inactive-value="0">
+                            </el-switch>
+                            <span class="switch-tip">允许</span>
+                        </el-form-item>
+                        <el-form-item label="虚拟成团：" prop="is_fictitious">
+                            <el-switch v-model="activityForm.is_fictitious" active-color="#7536D0"
+                                inactive-color="#e9ebef" :disabled="disabledFlag" active-value="1" inactive-value="0">
+                            </el-switch>
+                            <span class="switch-tip">允许</span>
+                            <el-popover class="popover-item" width="240" trigger="hover"
+                                content="开启虚拟成团后，在拼团有效期内人数不够的团，系统会虚拟用户凑满人数，使拼团成功。虚拟的用户不生成订单，只需对真实买家发货。(请在资料管理中添加足够数量的虚拟用户，否则虚拟成团不会成功)">
+                                <i slot="reference" class="el-icon-question"></i>
+                            </el-popover>
+                        </el-form-item>
+                    </div>
+                    <el-form-item label="参团卡显示：" prop="team_card">
+                        <el-switch v-model="activityForm.team_card" active-color="#7536D0" inactive-color="#e9ebef"
+                            :disabled="disabledFlag" active-value="1" inactive-value="0">
+                        </el-switch>
+                        <span class="switch-tip">允许</span>
+                        <el-popover class="popover-item" width="240" trigger="hover"
+                            content="开启参团卡显示后，商品详情页显示未成团的团列表，买家可以直接选择一个参团。">
+                            <i slot="reference" class="el-icon-question"></i>
+                        </el-popover>
+                    </el-form-item>
+                    <el-form-item label="最多虚拟人数：" prop="fictitious_num" v-if="activityForm.is_fictitious=='1'">
+                        <el-input type='number' v-model.number="activityForm.fictitious_num"
+                            placeholder="单团最多虚拟人数的名额限制，不填时，不限制名额" :disabled="disabledFlag"></el-input>
+                    </el-form-item>
+                    <el-form-item label="组团有效时间：" prop="valid_time">
+                        <el-input type='number' v-model.number="activityForm.valid_time" placeholder="申请组团的有效时间,默认不限制"
+                            :disabled="disabledFlag"><template slot="append">小时</template></el-input>
+                    </el-form-item>
+                </div>
+                <el-form-item label="每人限购件数：" prop="limit_buy">
+                    <el-input type='number' v-model.number="activityForm.limit_buy" placeholder="请输入限购件数"
+                        :disabled="disabledFlag"><template slot="append">件</template></el-input>
+                </el-form-item>
+                <el-form-item label="订单关闭时间：" prop="order_auto_close">
+                    <el-input v-model="activityForm.order_auto_close" placeholder="未支付订单，订单将自动关闭并退出活动"
+                        :disabled="disabledFlag"><template slot="append">分钟</template></el-input>
+                </el-form-item>
+                <el-form-item label="活动下架时间：" prop="activity_auto_close">
+                    <el-input v-model="activityForm.activity_auto_close" placeholder="活动结束后，将自动进入历史活动"
+                        :disabled="disabledFlag"><template slot="append">分钟</template></el-input>
+                </el-form-item>
+                <el-form-item label="活动说明：" prop="richtext_id">
+                    <div class="display-flex" style="align-items: center;line-height: 34px;">
+                        <el-input style="display: none;" v-model="activityForm.richtext_id" id="richtext_id"
+                            placeholder="请选择活动说明" disabled>
+                        </el-input>
+                        <el-input v-model="activityForm.richtext_title" id="richtext_title" placeholder="请选择活动说明">
+                        </el-input>
+                        <el-button class="choose-activity-method" :disabled="disabledFlag" @click="chooseMethod">选择活动说明
+                        </el-button>
+                    </div>
+
+                </el-form-item>
+                <el-form-item label="选择商品：" prop="goods_list">
+                    <el-input style="display: none;" v-model="activityForm.goods_list"></el-input>
+                    <el-button class="choose-activity-goods" :disabled="disabledFlag" @click="chooseGoods('activity')">
+                        商品选择</el-button>
+                </el-form-item>
+                <el-form-item style="margin-bottom: 20px;">
+                    <el-table :data="activityForm.goods_list" style="width: 100%"
+                        v-if="activityForm.goods_list.length>0">
+                        <el-table-column label="商品信息" width="320">
+                            <template slot-scope="scope">
+                                <div style="display: flex;">
+                                    <img style="width: 46px;height: 46px;margin-right: 15px;"
+                                        :src="Fast.api.cdnurl(scope.row.image)" alt="" srcset="">
+                                    <span style="width:200px;">{{scope.row.title}}</span>
+                                </div>
+                            </template>
+                        </el-table-column>
+                        <el-table-column label="操作">
+                            <template slot-scope="scope">
+                                <span class="table-good-status cursor-pointer" v-if="activityFormType!='view'"
+                                    :class="scope.row.opt?'table-good-status-1':''"
+                                    @click="chooseActivityPrice(scope.row.id,scope.$index,encodeURI(scope.row.actSkuPrice))">{{scope.row.opt === 0 ? "设置价格" : "修改价格"}}</span>
+                                <span class="table-good-status cursor-pointer" v-if="activityFormType=='view'"
+                                    @click="chooseActivityPrice(scope.row.id,scope.$index,encodeURI(scope.row.actSkuPrice))">查看详情</span>
+                                <span class="table-good-status-delete cursor-pointer" v-if="activityFormType!='view'"
+                                    @click="selectDelete(scope.$index)">移除</span>
+                            </template>
+                        </el-table-column>
+                    </el-table>
+                </el-form-item>
+            </div>
+            <el-form-item>
+                <div v-if="activityFormType!='view' && formSubFlag" class="dialog-submit cursor-pointer" type="primary"
+                    @click="submitForm('activityForm')">确认
+                </div>
+                <div v-if="activityFormType!='view' && !formSubFlag" class="dialog-submit dialog-submit-gray"
+                    type="primary">确认</div>
+            </el-form-item>
+        </el-form>
+
+    </el-dialog>
+</div>

@@ -1,0 +1,55 @@
+<style>
+    .table-bordered>thead>tr>th,
+    .table-bordered>tbody>tr>th,
+    .table-bordered>tfoot>tr>th,
+    .table-bordered>thead>tr>td,
+    .table-bordered>tbody>tr>td,
+    .table-bordered>tfoot>tr>td {
+        border: 1px solid #c0c4cc;
+    }
+
+    .table>caption+thead>tr:first-child>th,
+    .table>colgroup+thead>tr:first-child>th,
+    .table>thead:first-child>tr:first-child>th,
+    .table>caption+thead>tr:first-child>td,
+    .table>colgroup+thead>tr:first-child>td,
+    .table>thead:first-child>tr:first-child>td {
+        /* border-top: 0; */
+        border: 1px solid #888;
+    }
+</style>
+{foreach name="result" item="vo" key="vk"}
+<div class="table-responsive" style="padding-top: 150px;">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="row">{$vk}（日期）</th>
+                {foreach name="vo" item="v" key="k"}
+                <th>{$v.day}</th>
+                {/foreach}
+            <tr>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">剩余库存</th>
+                {foreach name="vo" item="v" key="k"}
+                <td>{$v.stock}</td>
+                {/foreach}
+            </tr>
+            <tr>
+                <th scope="row">已售</th>
+                {foreach name="vo" item="v" key="k"}
+                <td>{$v.day_stock}</td>
+                {/foreach}
+            </tr>
+            <tr>
+                <th scope="row">总库存</th>
+                {foreach name="vo" item="v" key="k"}
+                <td>{$v.stock_all}</td>
+                {/foreach}
+            </tr>
+        </tbody>
+    </table>
+</div>
+{/foreach}

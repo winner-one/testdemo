@@ -1,0 +1,4 @@
+https://test.moreinfo.tech/ma.php
+超级管理员：admin\admin888
+二级管理员：shopadmin\123456
+门店管理员：storeadmin\123456

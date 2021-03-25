@@ -1,0 +1,404 @@
+/* elementui */
+.el-pagination,
+.el-pagination__total,
+.el-input__inner,
+.el-pagination__jump {
+    color: #444;
+}
+
+.el-radio-button__inner {
+    font-size: 12px;
+}
+
+.el-radio-button__inner,
+.el-radio-button__inner:hover {
+    height: 32px;
+    line-height: 32px;
+    width: 80px;
+    text-align: center;
+    padding: 0;
+    color: #666;
+}
+
+.el-radio__input.is-checked+.el-radio__label,
+.el-tabs__item.is-active,
+.el-tabs__item:hover,
+.el-pager li.active,
+.el-select-dropdown__item.selected,
+.el-select-dropdown.is-multiple .el-select-dropdown__item.selected ,.el-checkbox__input.is-checked+.el-checkbox__label{
+    color: #7438D5;
+}
+
+.el-radio__input.is-checked .el-radio__inner,
+.el-tabs__active-bar,
+.el-checkbox__input.is-checked .el-checkbox__inner,
+.el-checkbox__input.is-indeterminate .el-checkbox__inner,
+.el-radio-button__orig-radio:checked+.el-radio-button__inner {
+    background: #7438D5;
+    border-color: #7438D5;
+}
+
+.el-radio-button__orig-radio:checked+.el-radio-button__inner {
+    box-shadow: -1px 0 0 0 #7438D5;
+}
+
+.el-button--primary,
+.el-button--primary:hover {
+    background: #7438D5 !important;
+    border-color: #7438D5 !important;
+    color: #fff;
+}
+
+.el-date-editor .el-range-separator {
+    line-height: 28px;
+}
+
+.el-table,
+.el-table thead,
+.el-table th {
+    color: #444;
+    font-weight: 500 !important;
+    font-size: 13px;
+}
+
+.el-table th {
+    background: #F9F9F9;
+    padding: 7px 0;
+}
+
+.el-tabs__item {
+    width: 80px;
+    padding: 0;
+    padding-right: 20px;
+    text-align: center;
+    color: #666;
+}
+
+.el-tabs__nav-wrap::after {
+    height: 1px;
+}
+
+.el-table td,
+.el-table th,
+.el-table th.is-leaf {
+    border-color: #f7f7f7;
+    padding: 0;
+}
+
+.el-table th .cell,
+.el-table td .cell {
+    height: 44px;
+    display: flex;
+    align-items: center;
+    line-height: 20px;
+    justify-content: center;
+}
+
+.el-table th .cell {
+    height: 40px;
+}
+
+.el-input__inner {
+    padding: 0 10px;
+}
+
+.el-input__inner,
+.el-input__icon {
+    height: 34px;
+    line-height: 34px;
+
+}
+
+/* tabs */
+.tabs-custom {
+    position: relative;
+    margin-bottom: 14px;
+}
+
+.el-tabs__header {
+    margin-bottom: 20px;
+
+}
+
+/* form */
+.el-form-item__label,
+.el-radio {
+    color: #444;
+    font-weight: 500;
+}
+
+.el-input-group__append,
+.el-input-group__prepend {
+    padding: 0 10px;
+}
+
+.el-select,
+.el-date-editor {
+    width: 100% !important;
+}
+
+/* 超出省略号 */
+.ellipsis-item {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.ellipsis-item-2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.ellipsis-1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* flex布局 */
+.display-flex {
+    display: flex;
+    align-items: center;
+}
+
+.display-flex-c {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.display-flex-b {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+label {
+    margin-bottom: 0;
+}
+
+/* 主题颜色 */
+.theme-color {
+    color: #7536D0;
+}
+
+.theme-delete-color {
+    color: #FF5959;
+}
+.color-444{
+    color: #444;
+}
+.color-666{
+    color: #666;
+}
+
+/* index页面32px */
+.custom-index .el-input__inner {
+    padding: 0 10px;
+}
+
+.custom-index .el-input__inner,
+.custom-index .el-input__icon {
+    height: 32px;
+    line-height: 32px;
+
+}
+
+/* 标题头部 */
+.custom-header {
+    height: 50px;
+    line-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.custom-header-title {
+    font-size: 14px;
+    color: #444;
+}
+
+/* 头部按钮 */
+.custom-button-container {
+    margin-bottom: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.custom-table-header {
+    margin-bottom: 14px;
+}
+
+/* 刷新 */
+.custom-refresh {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #E6E6E6;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #999;
+    margin-right: 14px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-btn {
+    background: #7536D0;
+    color: #fff;
+    width: 100px;
+    height: 32px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-btn i {
+    font-size: 14px;
+    margin-right: 8px;
+}
+
+.recycle-btn {
+    width: 88px;
+    color: #444;
+    border: #444 1px solid;
+    height: 32px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.recycle-btn i {
+    margin-right: 6px;
+    font-size: 14px;
+}
+
+/* table */
+.custom-table-body {
+    margin: 14px 0 30px;
+}
+
+.el-table__fixed-right::before,
+.el-table__fixed::before {
+    height: 0;
+}
+
+.el-table .bg-color {
+    background: #f9f9f9;
+}
+
+.cell-left .cell {
+    justify-content: flex-start !important;
+}
+
+.border-right {
+    border-right: 1px solid #E6E6E6;
+}
+
+.table-edit-text {
+    color: #7536D0;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.table-delete-text {
+    color: #FF5959;
+    cursor: pointer;
+}
+
+
+/* 分页 */
+.pagination-container {
+    justify-content: flex-end;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+}
+
+
+
+
+
+/* add edit */
+.dialog-form {
+    height: calc(100vh - 110px);
+    overflow-y: auto;
+    padding-right: 25px;
+}
+
+.dialog-form::-webkit-scrollbar {
+    width: 6px;
+}
+
+.dialog-form::-webkit-scrollbar-thumb {
+    width: 6px;
+    background: #e6e6e6;
+    height: 20px;
+    border-radius: 3px;
+}
+
+.create-store {
+    margin-left: 45px;
+}
+
+.dialog-footer {
+    padding: 10px;
+    height: 46px;
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;
+}
+
+.dialog-cancel-btn {
+    width: 88px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.dialog-define-btn {
+    width: 88px;
+    height: 36px;
+    background: #7438D5;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+
+/* .el-dialog */
+.el-dialog {
+    border-radius: 8px;
+}
+
+.el-dialog__title {
+    font-size: 14px !important;
+}

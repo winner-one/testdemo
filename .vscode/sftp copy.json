@@ -1,0 +1,10 @@
+{
+    "name": "zwy",
+    "host": "47.112.178.94",
+    "protocol": "sftp",
+    "port": 22,
+    "username": "root",
+    "password": "More@888!",
+    "remotePath": "/www/wwwroot/ls",
+    "uploadOnSave": false
+}

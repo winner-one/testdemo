@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="__CDN__/assets/addons/shopro/libs/element/element.css">
+<style>
+    #uploadIndex {
+        font-family: Source Han Sans SC;
+        background: #fff;
+        padding: 20px;
+        overflow: auto;
+        color: #666;
+        height: calc(100vh - 160px);
+    }
+    #picss{
+        cursor: pointer;
+    }
+
+    [v-cloak] {
+        display: none
+    }
+</style>
+<script src="__CDN__/assets/addons/shopro/libs/vue.js"></script>
+<script src="__CDN__/assets/addons/shopro/libs/element/element.js"></script>
+<div id="uploadIndex"> 
+    <div @click="selectPic('pic')" id="picss">选择图片</div>
+</div>

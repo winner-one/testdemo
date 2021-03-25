@@ -1,0 +1,164 @@
+<link rel="stylesheet" href="__CDN__/assets/addons/shopro/libs/element/element.css">
+<style>
+    #uploadSelect {
+        font-family: Source Han Sans SC;
+        background: #fff;
+        overflow: auto;
+        color: #666;
+        height: calc(100vh - 36px);
+        position: relative;
+    }
+
+    .display-flex {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .display-flex-b {
+        justify-content: space-between;
+    }
+
+    .inpt-search {
+        width: 260px;
+    }
+
+    .el-tabs--border-card {
+        border: none;
+        box-shadow: none;
+    }
+
+    .el-tabs--border-card>.el-tabs__header,
+    .el-tabs--left.el-tabs--border-card .el-tabs__item.is-left,
+    .el-tabs--left.el-tabs--border-card .el-tabs__header.is-left {
+        background: #fff;
+        border: none;
+    }
+
+    .el-tabs--border-card>.el-tabs__header .el-tabs__item.is-active,
+    .el-tabs--border-card>.el-tabs__item:hover,
+    .el-pager li.active {
+        color: #7438D5;
+    }
+
+    .el-tabs__content {
+        border-left: 1px solid #e5e5e5;
+        height: 100%;
+    }
+
+    .list-box {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 10px 0;
+        height: calc(100vh - 160px);
+    }
+
+    .list-item {
+        margin: 5px;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+    .list-item img{
+        /* position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0; */
+    }
+
+    #plupload-local {
+        background: #7438D5;
+        width: 88px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        color: #fff;
+        cursor: pointer;
+    }
+    .selected-item{
+        border: 1px solid #7438D5;
+        border-radius: 10px;
+    }
+
+    .tem-footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .page-box {
+        padding: 10px 0;
+    }
+
+    .sub-btn {
+        justify-content: flex-end;
+    }
+
+    [v-cloak] {
+        display: none
+    }
+</style>
+<script src="__CDN__/assets/addons/shopro/libs/vue.js"></script>
+<script src="__CDN__/assets/addons/shopro/libs/element/element.js"></script>
+
+<div id="uploadSelect" v-cloak>
+    <el-tabs type="border-card" tab-position="left" style="height: calc(100vh - 70px);;border-bottom: 1px solid #e5e5e5;">
+        <el-tab-pane>
+            <span slot="label">
+                <!-- <i class="el-icon-date"></i> -->
+                全部</span>
+            <div>
+                <div class="display-flex display-flex-b">
+                    <div class="inpt-search">
+                        <el-input v-model="searchKey" placeholder="请输入内容"></el-input>
+                    </div>
+
+                    <form id="select-form" class="form-horizontal form-ajax" role="form" data-toggle="validator"
+                        method="POST" action="">
+                        <div id="plupload-local" class="plupload" data-input-id="c-local"
+                            data-url="{:url('ajax/upload')}"><i class="fa fa-upload"></i> 上传</div>
+                    </form>
+                </div>
+                <div class="list-box">
+                    <el-row :gutter="5">
+        <el-col :xs="6" :sm="6" :md="6" :lg="4" :xl="2" v-for="(it,index) in datalist" style="height: 33.3%;display: flex;justify-content: center;align-items: center; margin-bottom: 10px;">
+                            <div class="list-item":class="it.selected?'selected-item':''" @click.stop="selectfun(index)">
+                                <img class="label-auto" :src="Fast.api.cdnurl(it.url)" alt="" srcset="">
+                            </div>
+                        </el-col>
+                        <!-- <el-col :xs="4" :sm="6" :md="8" :lg="9" :xl="11"><div class="grid-content bg-purple-light"></div></el-col>
+                        <el-col :xs="4" :sm="6" :md="8" :lg="9" :xl="11"><div class="grid-content bg-purple"></div></el-col>
+                        <el-col :xs="8" :sm="6" :md="4" :lg="3" :xl="1"><div class="grid-content bg-purple-light"></div></el-col> -->
+                      </el-row>
+                    
+                </div>
+            </div>
+        </el-tab-pane>
+        <el-tab-pane label="素材">素材</el-tab-pane>
+        <el-tab-pane label="平台">平台</el-tab-pane>
+        <el-tab-pane label="商品">商品</el-tab-pane>
+    </el-tabs>
+    <div class="tem-footer">
+        <div class="display-flex display-flex-b page-box">
+            <div>新建分类</div>
+            <div>
+                <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
+                    layout="total, prev, pager, next" :current-page.sync="currentPage" :page-size="10"
+                    :total="totalPage">
+                </el-pagination>
+            </div>
+        </div>
+        <div class="display-flex display-flex-b sub-btn">
+            <div @click="submitfun">
+                确定
+            </div>
+        </div>
+    </div>
+</div>
